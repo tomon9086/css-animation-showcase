@@ -1,4 +1,5 @@
 import { getContentCss, getContentHtml, listContentIds } from '@/contents'
+import clsx from 'clsx'
 import { ReadonlyURLSearchParams } from 'next/navigation'
 
 type Props = {
@@ -12,11 +13,13 @@ export default async function View(props: Props) {
   const html = await getContentHtml(id)
 
   return (
-    <div>
+    <div className={clsx('flex flex-col gap-2')}>
       <div>
         <style>{style}</style>
         <div dangerouslySetInnerHTML={{ __html: html }}></div>
       </div>
+      <pre className={clsx('border rounded', 'p-2')}>{html}</pre>
+      <pre className={clsx('border rounded', 'p-2')}>{style}</pre>
     </div>
   )
 }
