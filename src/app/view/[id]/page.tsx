@@ -1,3 +1,4 @@
+import { CopyButton } from '@/components/button'
 import { getContentCss, getContentHtml, listContentIds } from '@/contents'
 import clsx from 'clsx'
 import { ReadonlyURLSearchParams } from 'next/navigation'
@@ -18,8 +19,14 @@ export default async function View(props: Props) {
         <style>{style}</style>
         <div dangerouslySetInnerHTML={{ __html: html }}></div>
       </div>
-      <pre className={clsx('border rounded', 'p-2')}>{html}</pre>
-      <pre className={clsx('border rounded', 'p-2')}>{style}</pre>
+      <div>
+        <CopyButton text={html}></CopyButton>
+        <pre className={clsx('border rounded', 'p-2')}>{html}</pre>
+      </div>
+      <div>
+        <CopyButton text={style}></CopyButton>
+        <pre className={clsx('border rounded', 'p-2')}>{style}</pre>
+      </div>
     </div>
   )
 }
