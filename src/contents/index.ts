@@ -1,7 +1,7 @@
 import { readFile, readdir } from 'fs/promises'
 import { resolve } from 'path'
 
-const docsPath = () => resolve(process.cwd(), 'src/contents')
+const docsPath = () => resolve(process.cwd(), 'src/contents/assets')
 
 export const listContentIds = async () => {
   return await readdir(docsPath())
