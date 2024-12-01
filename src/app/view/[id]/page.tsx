@@ -2,6 +2,8 @@ import { CopyButton } from '@/components/button'
 import { getContentCss, getContentHtml, listContentIds } from '@/contents'
 import clsx from 'clsx'
 import { ReadonlyURLSearchParams } from 'next/navigation'
+import SyntaxHighlighter from 'react-syntax-highlighter'
+import { dark } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 
 type Props = {
   params: Promise<{ id: string }>
@@ -21,11 +23,23 @@ export default async function View(props: Props) {
       </div>
       <div>
         <CopyButton text={html}></CopyButton>
-        <pre className={clsx('border rounded', 'p-2')}>{html}</pre>
+        <SyntaxHighlighter
+          language='html'
+          style={dark}
+          className={clsx('border rounded', 'p-2')}
+        >
+          {html}
+        </SyntaxHighlighter>
       </div>
       <div>
         <CopyButton text={style}></CopyButton>
-        <pre className={clsx('border rounded', 'p-2')}>{style}</pre>
+        <SyntaxHighlighter
+          language='css'
+          style={dark}
+          className={clsx('border rounded', 'p-2')}
+        >
+          {style}
+        </SyntaxHighlighter>
       </div>
     </div>
   )
